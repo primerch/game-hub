@@ -8,10 +8,10 @@ function App() {
         <div className="[grid-area:nav]">
           <NavBar />
         </div>
-        <div className="hidden bg-yellow-500 [grid-area:aside] lg:block">
+        <div className="hidden [grid-area:aside] lg:block">
           <span>NavBar</span>
         </div>
-        <div className="bg-blue-500 [grid-area:main]">Main</div>
+        <div className="[grid-area:main]">Main</div>
       </div>
     </>
   );

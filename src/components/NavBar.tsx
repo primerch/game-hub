@@ -1,10 +1,11 @@
 import logo from "../assets/logo.webp";
+import ColorModeSwitch from "./ColorModeSwitch.tsx";
 
 const NavBar = () => {
   return (
-    <div className="flex">
+    <div className="flex justify-between p-2.5">
       <img src={logo} alt="" className="w-16" />
-      <span className="m-auto">NavBar</span>
+      <ColorModeSwitch />
     </div>
   );
 };
