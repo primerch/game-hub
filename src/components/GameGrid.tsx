@@ -1,39 +1,7 @@
-import { useEffect, useState } from "react";
-import apiClient, { CanceledError } from "../services/api-client.ts";
-
-interface Game {
-  id: number;
-  name: string;
-}
-
-interface FetchGamesResponse {
-  count: number;
-  results: Game[];
-}
+import useGames from "../hooks/useGames.ts";
 
 const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    apiClient
-      .get<FetchGamesResponse>("/games", { signal: abortController.signal })
-      .then(({ data: { results } }) =>
-        setGames(
-          results.map((result) => ({ id: result.id, name: result.name })),
-        ),
-      )
-      .catch((e) => {
-        if (e instanceof CanceledError) return;
-        setError(e.message);
-      });
-
-    return () => {
-      abortController.abort();
-    };
-  }, []);
+  const { games, setGames, error, setError } = useGames();
 
   return (
     <>
