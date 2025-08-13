@@ -16,6 +16,7 @@ const GameGrid = () => {
             name={game.name}
             background_image={game.background_image}
             parent_platforms={game.parent_platforms}
+            metacritic={game.metacritic}
           />
         ))}
       </div>

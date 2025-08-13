@@ -1,11 +1,13 @@
 import type { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList.tsx";
+import CriticScore from "./CriticScore.tsx";
 
-interface Props {
-  game: Game;
-}
-
-const GameCard = ({ name, background_image, parent_platforms }: Game) => {
+const GameCard = ({
+  name,
+  background_image,
+  parent_platforms,
+  metacritic,
+}: Game) => {
   return (
     <div className="card card-border bg-base-100 m-2.5 shadow-sm">
       <figure>
@@ -13,7 +15,10 @@ const GameCard = ({ name, background_image, parent_platforms }: Game) => {
       </figure>
       <div className="card-body">
         <div className="card-title mb-1 text-2xl">{name}</div>
-        <PlatformIconList parent_platforms={parent_platforms} />
+        <div className="flex items-center justify-between">
+          <PlatformIconList parent_platforms={parent_platforms} />
+          <CriticScore metacritic={metacritic} />
+        </div>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ export interface Game {
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 
 interface FetchGamesResponse {
@@ -25,11 +26,12 @@ const useGames = () => {
       .get<FetchGamesResponse>("/games", { signal: controller.signal })
       .then(({ data: { results } }) => {
         setGames(
-          results.map((result) => ({
-            id: result.id,
-            name: result.name,
-            background_image: result.background_image,
-            parent_platforms: result.parent_platforms,
+          results.map((game: Game) => ({
+            id: game.id,
+            name: game.name,
+            background_image: game.background_image,
+            parent_platforms: game.parent_platforms,
+            metacritic: game.metacritic,
           })),
         );
       })
