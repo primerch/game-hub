@@ -1,42 +1,43 @@
 import {
+  FaAndroid,
   FaApple,
   FaLinux,
   FaPlaystation,
   FaWindows,
   FaXbox,
 } from "react-icons/fa";
-import { BsNintendoSwitch } from "react-icons/bs";
+import type { IconType } from "react-icons";
+import { MdPhoneIphone } from "react-icons/md";
+import { BsGlobe, BsNintendoSwitch } from "react-icons/bs";
 
 export interface Platform {
-  platform: {
-    id: number;
-    slug: string;
-  };
+  id: number;
+  slug: string;
 }
 
 interface Props {
-  parent_platforms: Platform[];
-}
-
-function slugToIcon(pstring: string) {
-  if (pstring === "pc") return <FaWindows className="mr-2 inline" />;
-  if (pstring === "playstation")
-    return <FaPlaystation className="mr-2 inline" />;
-  if (pstring === "nintendo")
-    return <BsNintendoSwitch className="mr-2 inline" />;
-  if (pstring === "mac") return <FaApple className="mr-2 inline" />;
-  if (pstring === "xbox") return <FaXbox className="mr-2 inline" />;
-  if (pstring === "linux") return <FaLinux className="mr-2 inline" />;
+  parent_platforms: { platform: Platform }[];
 }
 
 const PlatformIconList = ({ parent_platforms }: Props) => {
+  const iconMap: Record<string, IconType> = {
+    pc: FaWindows,
+    playstation: FaPlaystation,
+    nintendo: BsNintendoSwitch,
+    mac: FaApple,
+    xbox: FaXbox,
+    linux: FaLinux,
+    android: FaAndroid,
+    ios: MdPhoneIphone,
+    web: BsGlobe,
+  };
+
   return (
-    <div>
-      {parent_platforms.map(({ platform }) => (
-        <>
-          <span key={platform.id}>{slugToIcon(platform.slug)}</span>
-        </>
-      ))}
+    <div className="flex gap-2">
+      {parent_platforms.map(({ platform }) => {
+        const Icon = iconMap[platform.slug];
+        return <span key={platform.id}>{Icon ? <Icon /> : null}</span>;
+      })}
     </div>
   );
 };
