@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client.ts";
 
+interface Platform {
+  id: number;
+  name: string;
+}
+
 export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: Platform[];
 }
 
 interface FetchGamesResponse {
@@ -21,15 +27,16 @@ const useGames = () => {
 
     apiClient
       .get<FetchGamesResponse>("/games", { signal: controller.signal })
-      .then(({ data: { results } }) =>
+      .then(({ data: { results } }) => {
         setGames(
           results.map((result) => ({
             id: result.id,
             name: result.name,
             background_image: result.background_image,
+            parent_platforms: result.parent_platforms,
           })),
-        ),
-      )
+        );
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
