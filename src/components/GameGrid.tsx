@@ -15,6 +15,7 @@ const GameGrid = () => {
             id={game.id}
             name={game.name}
             background_image={game.background_image}
+            parent_platforms={game.parent_platforms}
           />
         ))}
       </div>

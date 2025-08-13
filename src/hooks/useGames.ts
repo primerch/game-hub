@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client.ts";
-
-interface Platform {
-  id: number;
-  name: string;
-}
+import type { Platform } from "../components/PlatformIconList.tsx";
 
 export interface Game {
   id: number;
