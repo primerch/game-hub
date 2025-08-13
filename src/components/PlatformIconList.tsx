@@ -24,7 +24,7 @@ function slugToIcon(pstring: string) {
     return <FaPlaystation className="mr-2 inline" />;
   if (pstring === "nintendo")
     return <BsNintendoSwitch className="mr-2 inline" />;
-  if (pstring === "apple") return <FaApple className="mr-2 inline" />;
+  if (pstring === "mac") return <FaApple className="mr-2 inline" />;
   if (pstring === "xbox") return <FaXbox className="mr-2 inline" />;
   if (pstring === "linux") return <FaLinux className="mr-2 inline" />;
 }
