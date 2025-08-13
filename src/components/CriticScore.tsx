@@ -3,19 +3,16 @@ interface Props {
 }
 
 const CriticScore = ({ metacritic }: Props) => {
-  const criticScoreBg =
-    metacritic > 90
+  const scoreBgColor =
+    metacritic >= 90
       ? "text-green-300"
-      : metacritic > 85
+      : metacritic >= 85
         ? "text-yellow-300"
         : "text-red-300";
 
-  // return <span className={criticScoreBg}>{metacritic}</span>;
-  const classnames = [criticScoreBg, "radial-progress", "text-xs"];
-
   return (
     <div
-      className={classnames.join(" ")}
+      className={`radial-progress text-xs ${scoreBgColor}`}
       style={
         { "--value": metacritic, "--size": "1.5rem" } as React.CSSProperties
       }
