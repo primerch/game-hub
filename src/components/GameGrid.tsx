@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client.ts";
 
-// todo  add error
-
 interface Game {
   id: number;
   name: string;
@@ -38,11 +36,15 @@ const GameGrid = () => {
   }, []);
 
   return (
-    <ul>
-      {games.map((game) => (
-        <li key={game.id}>{game.name}</li>
-      ))}
-    </ul>
+    <>
+      {error && <p className="text-error">{error}</p>}
+
+      <ul>
+        {games.map((game) => (
+          <li key={game.id}>{game.name}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 export default GameGrid;
