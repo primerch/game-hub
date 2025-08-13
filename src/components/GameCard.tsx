@@ -12,7 +12,7 @@ const GameCard = ({ name, background_image, parent_platforms }: Game) => {
         <img src={background_image} alt="Game Background Image" />
       </figure>
       <div className="card-body">
-        <div className="card-title text-2xl">{name}</div>
+        <div className="card-title mb-1 text-2xl">{name}</div>
         <PlatformIconList parent_platforms={parent_platforms} />
       </div>
     </div>

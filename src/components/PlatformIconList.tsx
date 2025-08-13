@@ -36,7 +36,11 @@ const PlatformIconList = ({ parent_platforms }: Props) => {
     <div className="flex gap-2">
       {parent_platforms.map(({ platform }) => {
         const Icon = iconMap[platform.slug];
-        return <span key={platform.id}>{Icon ? <Icon /> : null}</span>;
+        return (
+          <span key={platform.id}>
+            {Icon ? <Icon className="fill-gray-500" /> : null}
+          </span>
+        );
       })}
     </div>
   );
