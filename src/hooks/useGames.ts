@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client.ts";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGamesResponse {
@@ -22,7 +23,11 @@ const useGames = () => {
       .get<FetchGamesResponse>("/games", { signal: controller.signal })
       .then(({ data: { results } }) =>
         setGames(
-          results.map((result) => ({ id: result.id, name: result.name })),
+          results.map((result) => ({
+            id: result.id,
+            name: result.name,
+            background_image: result.background_image,
+          })),
         ),
       )
       .catch((err) => {
