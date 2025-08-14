@@ -44,7 +44,7 @@ function App() {
         </div>
         <div className="hidden [grid-area:aside] lg:block">
           <GenreList
-            onSelectedGenre={handleOnSelectedGenre}
+            onSelectGenre={handleOnSelectedGenre}
             error={genresError}
             loading={genresLoading}
             data={genres}

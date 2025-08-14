@@ -2,12 +2,12 @@ import type { Genre } from "../hooks/useGenres.ts";
 
 interface Props {
   data: Genre[];
-  onSelectedGenre: (genre: Genre) => void;
+  onSelectGenre: (genre: Genre) => void;
   error: string;
   loading: boolean;
 }
 
-const GenreList = ({ data, onSelectedGenre, error, loading }: Props) => {
+const GenreList = ({ data, onSelectGenre, error, loading }: Props) => {
   if (error) return null;
   if (loading) return <span className="loading loading-dots loading-xl"></span>;
 
@@ -26,7 +26,7 @@ const GenreList = ({ data, onSelectedGenre, error, loading }: Props) => {
               <div>
                 <button
                   className="cursor-pointer"
-                  onClick={() => onSelectedGenre(genre)}
+                  onClick={() => onSelectGenre(genre)}
                 >
                   {genre.name}
                 </button>
