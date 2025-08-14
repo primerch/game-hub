@@ -30,7 +30,7 @@ const useData = <T>(endpoint: string) => {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [endpoint]);
 
   return { data, setData, error, setError, loading, setLoading };
 };
