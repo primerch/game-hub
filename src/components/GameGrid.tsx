@@ -16,31 +16,34 @@ const GameGrid = ({ selectedGenre }: Props) => {
   ];
 
   if (loading) {
-    return skeletons.map((skeleton) => {
-      return (
-        <GameCardContainer key={skeleton}>
-          <GameCardSkeleton />
-        </GameCardContainer>
-      );
-    });
+    return (
+      <>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {skeletons.map((skeleton) => (
+            <GameCardContainer>
+              <GameCardSkeleton />
+            </GameCardContainer>
+          ))}
+        </div>
+      </>
+    );
   }
 
   return (
     <>
       {error && <span>{error}</span>}
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {!loading &&
-          data.map((game) => (
-            <GameCardContainer key={game.id}>
-              <GameCard
-                id={game.id}
-                name={game.name}
-                background_image={game.background_image}
-                parent_platforms={game.parent_platforms}
-                metacritic={game.metacritic}
-              />
-            </GameCardContainer>
-          ))}
+        {data.map((game) => (
+          <GameCardContainer key={game.id}>
+            <GameCard
+              id={game.id}
+              name={game.name}
+              background_image={game.background_image}
+              parent_platforms={game.parent_platforms}
+              metacritic={game.metacritic}
+            />
+          </GameCardContainer>
+        ))}
       </div>
     </>
   );
