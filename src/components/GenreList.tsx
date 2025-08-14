@@ -8,18 +8,16 @@ const GenreList = () => {
       {error && <p className="text-error">{error}</p>}
       <ul className="list bg-base-100 rounded-box shadow-md">
         {data.map((genre) => (
-          <li key={genre.id}>
-            <li className="list-row">
-              <div>
-                <img
-                  className="rounded-box size-10"
-                  src={genre.image_background}
-                />
-              </div>
-              <div>
-                <a href="#">{genre.name}</a>
-              </div>
-            </li>
+          <li className="list-row" key={genre.id}>
+            <div>
+              <img
+                className="rounded-box size-10"
+                src={genre.image_background}
+              />
+            </div>
+            <div>
+              <a href="#">{genre.name}</a>
+            </div>
           </li>
         ))}
       </ul>
