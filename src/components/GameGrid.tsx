@@ -33,7 +33,6 @@ const GameGrid = ({ slug, data, error, loading }: Props) => {
           data.map((game) => (
             <GameCardContainer key={game.id}>
               <GameCard
-                key={game.id}
                 id={game.id}
                 name={game.name}
                 background_image={game.background_image}
