@@ -9,18 +9,22 @@ const GameGrid = () => {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
 
+  if (error) return null;
+
+  if (loading) {
+    return skeletons.map((skeleton) => {
+      return (
+        <GameCardContainer key={skeleton}>
+          <GameCardSkeleton />
+        </GameCardContainer>
+      );
+    });
+  }
+
   return (
     <>
       {error && <span>{error}</span>}
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {loading &&
-          skeletons.map((skeleton) => {
-            return (
-              <GameCardContainer key={skeleton}>
-                <GameCardSkeleton />
-              </GameCardContainer>
-            );
-          })}
         {!loading &&
           data.map((game) => (
             <GameCardContainer key={game.id}>
