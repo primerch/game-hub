@@ -1,6 +1,6 @@
 const GameCardSkeleton = () => {
   return (
-    <div className="card bg-base-100 m-2.5 shadow-sm">
+    <>
       <figure>
         <div className="skeleton w-full aspect-[3/2]" />
       </figure>
@@ -15,7 +15,7 @@ const GameCardSkeleton = () => {
           <div className="skeleton h-6 w-10 rounded-md"></div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

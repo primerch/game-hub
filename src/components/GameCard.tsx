@@ -10,7 +10,7 @@ const GameCard = ({
   metacritic,
 }: Game) => {
   return (
-    <div className="card card-border bg-base-100 m-2.5 shadow-sm">
+    <>
       <figure>
         <img
           src={getCroppedImageUrl(background_image)}
@@ -24,7 +24,7 @@ const GameCard = ({
           <CriticScore metacritic={metacritic} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import useGames from "../hooks/useGames.ts";
 import GameCard from "./GameCard.tsx";
+import GameCardContainer from "./GameCardContainer.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 
 const GameGrid = () => {
@@ -13,17 +14,27 @@ const GameGrid = () => {
       {error && <p className="text-error">{error}</p>}
 
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {loading && skeletons.map((skeleton) => <GameCardSkeleton />)}
+        {loading &&
+          skeletons.map((skeleton) => {
+            return (
+              <GameCardContainer>
+                {" "}
+                <GameCardSkeleton />{" "}
+              </GameCardContainer>
+            );
+          })}
         {!loading &&
           games.map((game) => (
-            <GameCard
-              key={game.id}
-              id={game.id}
-              name={game.name}
-              background_image={game.background_image}
-              parent_platforms={game.parent_platforms}
-              metacritic={game.metacritic}
-            />
+            <GameCardContainer>
+              <GameCard
+                key={game.id}
+                id={game.id}
+                name={game.name}
+                background_image={game.background_image}
+                parent_platforms={game.parent_platforms}
+                metacritic={game.metacritic}
+              />
+            </GameCardContainer>
           ))}
       </div>
     </>
