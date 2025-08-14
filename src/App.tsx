@@ -1,6 +1,7 @@
 import "./App.css";
 import NavBar from "./components/NavBar.tsx";
 import GameGrid from "./components/GameGrid.tsx";
+import GenreList from "./components/GenreList.tsx";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
           <NavBar />
         </div>
         <div className="hidden [grid-area:aside] lg:block">
-          <span>Aside</span>
+          <GenreList />
         </div>
         <div className="[grid-area:main]">
           <GameGrid />
