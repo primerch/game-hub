@@ -22,12 +22,6 @@ function App() {
 
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
-  const handleOnSelectedGenre = (slug: Genre) => {
-    console.log(slug);
-
-    setSelectedGenre(slug);
-  };
-
   const originalGames = [...games];
 
   const filteredGames = selectedGenre
@@ -44,7 +38,7 @@ function App() {
         </div>
         <div className="hidden [grid-area:aside] lg:block">
           <GenreList
-            onSelectGenre={handleOnSelectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
             error={genresError}
             loading={genresLoading}
             data={genres}
