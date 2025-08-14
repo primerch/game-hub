@@ -1,13 +1,12 @@
-import type { Genre } from "../hooks/useGenres.ts";
+import useGenres, { type Genre } from "../hooks/useGenres.ts";
 
 interface Props {
-  data: Genre[];
   onSelectGenre: (genre: Genre) => void;
-  error: string;
-  loading: boolean;
 }
 
-const GenreList = ({ data, onSelectGenre, error, loading }: Props) => {
+const GenreList = ({ onSelectGenre }: Props) => {
+  const { data, error, loading } = useGenres();
+
   if (error) return null;
   if (loading) return <span className="loading loading-dots loading-xl"></span>;
 

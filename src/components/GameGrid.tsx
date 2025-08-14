@@ -29,11 +29,17 @@ const GameGrid = ({ selectedGenre }: Props) => {
     );
   }
 
+  const gameShow = selectedGenre
+    ? data.filter((game) =>
+        game.genres.some((genre) => genre.slug === selectedGenre.slug),
+      )
+    : data;
+
   return (
     <>
       {error && <span>{error}</span>}
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {data.map((game) => (
+        {gameShow.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard
               id={game.id}

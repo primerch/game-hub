@@ -3,32 +3,10 @@ import NavBar from "./components/NavBar.tsx";
 import GameGrid from "./components/GameGrid.tsx";
 import GenreList from "./components/GenreList.tsx";
 import { useState } from "react";
-import useGames from "./hooks/useGames.ts";
-import useGenres, { type Genre } from "./hooks/useGenres.ts";
+import { type Genre } from "./hooks/useGenres.ts";
 
 function App() {
-  const {
-    data: games,
-    setData: setGames,
-    error: gamesError,
-    loading: gamesLoading,
-  } = useGames();
-
-  const {
-    data: genres,
-    error: genresError,
-    loading: genresLoading,
-  } = useGenres();
-
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-
-  const originalGames = [...games];
-
-  const filteredGames = selectedGenre
-    ? games.filter((game) =>
-        game.genres.some((genre) => genre.slug === selectedGenre.slug),
-      )
-    : originalGames;
 
   return (
     <>
@@ -36,21 +14,13 @@ function App() {
         <div className="[grid-area:nav]">
           <NavBar />
         </div>
+
         <div className="hidden [grid-area:aside] lg:block">
-          <GenreList
-            onSelectGenre={(genre) => setSelectedGenre(genre)}
-            error={genresError}
-            loading={genresLoading}
-            data={genres}
-          />
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
         </div>
+
         <div className="[grid-area:main]">
-          <GameGrid
-            selectedGenre={selectedGenre}
-            data={filteredGames}
-            error={gamesError}
-            loading={gamesLoading}
-          />
+          <GameGrid selectedGenre={selectedGenre} />
         </div>
       </div>
     </>
