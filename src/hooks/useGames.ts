@@ -36,12 +36,11 @@ const useGames = () => {
             metacritic: game.metacritic,
           })),
         );
+        setLoading(false);
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
-      })
-      .finally(() => {
         setLoading(false);
       });
 

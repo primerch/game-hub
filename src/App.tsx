@@ -5,7 +5,7 @@ import GameGrid from "./components/GameGrid.tsx";
 function App() {
   return (
     <>
-      <div className="grid [grid-template-areas:'nav''main'] lg:[grid-template-areas:'nav_nav''aside_main']">
+      <div className="grid [grid-template-areas:'nav''main'] lg:grid-cols-[200px_1fr] lg:[grid-template-areas:'nav_nav''aside_main']">
         <div className="[grid-area:nav]">
           <NavBar />
         </div>
