@@ -46,6 +46,7 @@ function App() {
         </div>
         <div className="[grid-area:main]">
           <GameGrid
+            selectedGenre={selectedGenre}
             data={filteredGames}
             error={gamesError}
             loading={gamesLoading}
