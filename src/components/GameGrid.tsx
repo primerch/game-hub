@@ -5,40 +5,36 @@ import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import useGenres from "../hooks/useGenres.ts";
 
 const GameGrid = () => {
-  const { games, setGames, error, setError, loading } = useGames();
+  const { games, loading } = useGames();
   useGenres();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
 
   return (
-    <>
-      {error && <p className="text-error">{error}</p>}
-
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {loading &&
-          skeletons.map((skeleton) => {
-            return (
-              <GameCardContainer key={skeleton}>
-                <GameCardSkeleton />
-              </GameCardContainer>
-            );
-          })}
-        {!loading &&
-          games.map((game) => (
-            <GameCardContainer>
-              <GameCard
-                key={game.id}
-                id={game.id}
-                name={game.name}
-                background_image={game.background_image}
-                parent_platforms={game.parent_platforms}
-                metacritic={game.metacritic}
-              />
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {loading &&
+        skeletons.map((skeleton) => {
+          return (
+            <GameCardContainer key={skeleton}>
+              <GameCardSkeleton />
             </GameCardContainer>
-          ))}
-      </div>
-    </>
+          );
+        })}
+      {!loading &&
+        games.map((game) => (
+          <GameCardContainer key={game.id}>
+            <GameCard
+              key={game.id}
+              id={game.id}
+              name={game.name}
+              background_image={game.background_image}
+              parent_platforms={game.parent_platforms}
+              metacritic={game.metacritic}
+            />
+          </GameCardContainer>
+        ))}
+    </div>
   );
 };
 export default GameGrid;
