@@ -4,7 +4,7 @@ import GameGrid from "./components/GameGrid.tsx";
 import GenreList from "./components/GenreList.tsx";
 import { useState } from "react";
 import useGames from "./hooks/useGames.ts";
-import useGenres from "./hooks/useGenres.ts";
+import useGenres, { type Genre } from "./hooks/useGenres.ts";
 
 function App() {
   const {
@@ -20,9 +20,9 @@ function App() {
     loading: genresLoading,
   } = useGenres();
 
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
-  const handleOnSelectedGenre = (slug: string) => {
+  const handleOnSelectedGenre = (slug: Genre) => {
     console.log(slug);
 
     setSelectedGenre(slug);
@@ -32,7 +32,7 @@ function App() {
 
   const filteredGames = selectedGenre
     ? games.filter((game) =>
-        game.genres.some((genre) => genre.slug === selectedGenre),
+        game.genres.some((genre) => genre.slug === selectedGenre.slug),
       )
     : originalGames;
 
@@ -52,7 +52,6 @@ function App() {
         </div>
         <div className="[grid-area:main]">
           <GameGrid
-            slug={selectedGenre}
             data={filteredGames}
             error={gamesError}
             loading={gamesLoading}

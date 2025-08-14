@@ -2,7 +2,7 @@ import type { Genre } from "../hooks/useGenres.ts";
 
 interface Props {
   data: Genre[];
-  onSelectedGenre: (genre: string) => void;
+  onSelectedGenre: (genre: Genre) => void;
   error: string;
   loading: boolean;
 }
@@ -26,7 +26,7 @@ const GenreList = ({ data, onSelectedGenre, error, loading }: Props) => {
               <div>
                 <button
                   className="cursor-pointer"
-                  onClick={() => onSelectedGenre(genre.slug)}
+                  onClick={() => onSelectedGenre(genre)}
                 >
                   {genre.name}
                 </button>
