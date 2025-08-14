@@ -1,10 +1,16 @@
-import useGames from "../hooks/useGames.ts";
 import GameCard from "./GameCard.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
+import type { Game } from "../hooks/useGames.ts";
 
-const GameGrid = () => {
-  const { data, error, loading } = useGames();
+interface Props {
+  slug: string;
+  data: Game[];
+  error: string;
+  loading: boolean;
+}
+
+const GameGrid = ({ slug, data, error, loading }: Props) => {
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];

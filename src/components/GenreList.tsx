@@ -1,8 +1,13 @@
-import useGenres from "../hooks/useGenres.ts";
+import type { Genre } from "../hooks/useGenres.ts";
 
-const GenreList = () => {
-  const { data, error, loading } = useGenres();
+interface Props {
+  data: Genre[];
+  onSelectedGenre: (genre: string) => void;
+  error: string;
+  loading: boolean;
+}
 
+const GenreList = ({ data, onSelectedGenre, error, loading }: Props) => {
   if (error) return null;
   if (loading) return <span className="loading loading-dots loading-xl"></span>;
 
@@ -19,7 +24,12 @@ const GenreList = () => {
                 />
               </div>
               <div>
-                <a href="#">{genre.name}</a>
+                <button
+                  className="cursor-pointer"
+                  onClick={() => onSelectedGenre(genre.slug)}
+                >
+                  {genre.name}
+                </button>
               </div>
             </li>
           ))}

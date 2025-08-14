@@ -18,8 +18,6 @@ const useData = <T>(endpoint: string) => {
     apiClient
       .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
       .then(({ data: { results } }) => {
-        console.log(results);
-
         setData(results);
         setLoading(false);
       })
