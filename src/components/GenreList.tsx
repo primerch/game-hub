@@ -3,11 +3,11 @@ import useGenres from "../hooks/useGenres.ts";
 const GenreList = () => {
   const { data, error, loading } = useGenres();
 
+  if (error) return null;
   if (loading) return <span className="loading loading-dots loading-xl"></span>;
+
   return (
     <>
-      {error && <p className="text-error">{error}</p>}
-
       {!loading && (
         <ul className="list bg-base-100 rounded-box shadow-md">
           {data.map((genre) => (
