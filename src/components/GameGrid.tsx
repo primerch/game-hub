@@ -2,11 +2,9 @@ import useGames from "../hooks/useGames.ts";
 import GameCard from "./GameCard.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
-import useGenres from "../hooks/useGenres.ts";
 
 const GameGrid = () => {
-  const { games, loading } = useGames();
-  useGenres();
+  const { games, setGames, error, setError, loading } = useGames();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
