@@ -2,9 +2,10 @@ import useGenres, { type Genre } from "../hooks/useGenres.ts";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, error, loading } = useGenres();
 
   if (error) return null;
@@ -22,7 +23,11 @@ const GenreList = ({ onSelectGenre }: Props) => {
                   src={genre.image_background}
                 />
               </div>
-              <div>
+              <div
+                className={
+                  selectedGenre?.id === genre.id ? "font-bold" : "font-normal"
+                }
+              >
                 <button
                   className="cursor-pointer"
                   onClick={() => onSelectGenre(genre)}

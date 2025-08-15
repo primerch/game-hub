@@ -16,7 +16,10 @@ function App() {
         </div>
 
         <div className="hidden [grid-area:aside] lg:block">
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </div>
 
         <div className="[grid-area:main]">
