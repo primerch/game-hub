@@ -13,12 +13,10 @@ interface GameQuery {
 }
 
 function App() {
-  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  // const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-  //   null,
-  // );
-
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({
+    genre: null,
+    platform: null,
+  });
 
   return (
     <>
