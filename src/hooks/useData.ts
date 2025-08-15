@@ -36,7 +36,11 @@ const useData = <T>(
           setLoading(false);
         });
 
+      // ? : checks truthiness (covers all falsy values).
+      // ?? checks specifically for null or undefined.
       return () => controller.abort();
+
+      // can also be :[...(deps ?? [])]
     },
     deps ? [...deps] : [],
   );
