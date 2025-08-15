@@ -7,7 +7,7 @@ import { type Genre } from "./hooks/useGenres.ts";
 import PlatformSelector from "./components/PlatformSelector.tsx";
 import type { Platform } from "./components/PlatformIconList.tsx";
 
-interface GameQuery {
+export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
 }
@@ -27,7 +27,7 @@ function App() {
 
         <div className="hidden [grid-area:aside] lg:block">
           <GenreList
-            selectedGenre={gameQuery.genre}
+            gameQuery={gameQuery}
             onSelectGenre={(genre) =>
               setGameQuery({ ...gameQuery, genre: genre })
             }
@@ -41,10 +41,7 @@ function App() {
               setGameQuery({ ...gameQuery, platform })
             }
           />
-          <GameGrid
-            selectedGenre={gameQuery.genre}
-            selectedPlatform={gameQuery.platform}
-          />
+          <GameGrid gameQuery={gameQuery} />
         </div>
       </div>
     </>

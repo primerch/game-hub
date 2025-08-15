@@ -2,16 +2,14 @@ import GameCard from "./GameCard.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import useGames from "../hooks/useGames.ts";
-import type { Genre } from "../hooks/useGenres.ts";
-import type { Platform } from "./PlatformIconList.tsx";
+import type { GameQuery } from "../App.tsx";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-  const { data, loading, error } = useGames(selectedGenre, selectedPlatform);
+const GameGrid = ({ gameQuery }: Props) => {
+  const { data, loading, error } = useGames(gameQuery);
 
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,

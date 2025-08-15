@@ -1,12 +1,15 @@
 import useGenres, { type Genre } from "../hooks/useGenres.ts";
+import type { GameQuery } from "../App.tsx";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  gameQuery: GameQuery;
 }
 
-const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
   const { data, error, loading } = useGenres();
+
+  const selectedGenre = gameQuery?.genre;
 
   if (error) return null;
   if (loading) return <span className="loading loading-dots loading-xl"></span>;

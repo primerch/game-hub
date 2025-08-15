@@ -1,9 +1,10 @@
 import usePlatforms from "../hooks/usePlatforms.ts";
 import type { Platform } from "./PlatformIconList.tsx";
+import type { GameQuery } from "../App.tsx";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatform: GameQuery["platform"];
 }
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
