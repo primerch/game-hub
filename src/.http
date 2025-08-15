@@ -1,0 +1,2 @@
+### GET
+GET https://api.rawg.io/api/platforms/lists/parents?key={{RAWG_API_KEY}}&page=1
