@@ -6,6 +6,7 @@ import { useState } from "react";
 import { type Genre } from "./hooks/useGenres.ts";
 import PlatformSelector from "./components/PlatformSelector.tsx";
 import type { Platform } from "./components/PlatformIconList.tsx";
+import SortSelector from "./components/SortSelector.tsx";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -41,6 +42,7 @@ function App() {
               setGameQuery({ ...gameQuery, platform })
             }
           />
+          <SortSelector />
           <GameGrid gameQuery={gameQuery} />
         </div>
       </div>
