@@ -12,6 +12,7 @@ import { BsGlobe, BsNintendoSwitch } from "react-icons/bs";
 
 export interface Platform {
   id: number;
+  name: string;
   slug: string;
 }
 

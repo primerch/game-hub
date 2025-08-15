@@ -29,6 +29,7 @@ function App() {
 
         <div className="[grid-area:main]">
           <PlatformSelector
+            selectedPlatform={selectedPlatform}
             onSelectPlatform={(platform) => setSelectedPlatform(platform)}
           />
           <GameGrid
