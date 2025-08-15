@@ -13,11 +13,14 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   if (error) return null;
 
   return (
-    <details className="dropdown">
-      <summary className="btn m-1">
+    <div className="dropdown dropdown-hover">
+      <div tabIndex={0} role="button" className="btn m-1">
         {selectedPlatform?.name || "Platform"}
-      </summary>
-      <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+      </div>
+      <ul
+        tabIndex={0}
+        className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+      >
         {data.map((platform) => (
           <li key={platform.id}>
             <button onClick={() => onSelectPlatform(platform)}>
@@ -26,7 +29,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
           </li>
         ))}
       </ul>
-    </details>
+    </div>
   );
 };
 
