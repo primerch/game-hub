@@ -2,13 +2,15 @@ const getCroppedImageUrl = (url: string | null) => {
   const width = 600;
   const height = 400;
 
+  if (!url) return "";
+
   return (
-    url?.slice(0, url.indexOf("/games")) +
+    url.slice(0, url.indexOf("/games")) +
     "/crop/" +
     width +
     "/" +
     height +
-    url?.slice(url?.indexOf("/games"))
+    url.slice(url.indexOf("/games"))
   );
 };
 
