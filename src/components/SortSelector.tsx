@@ -1,19 +1,20 @@
-import type { GameQuery } from "../App.tsx";
-
 interface Props {
   onSelectSortOrder: (sortOrder: string) => void;
-  gameQuery: GameQuery;
+  sortOrder: string;
 }
 
-const SortSelector = ({ onSelectSortOrder, gameQuery }: Props) => {
+const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
   const sortOrders = [
-    { value: "relevance", label: "Relevance" },
+    { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
     { value: "name", label: "Name" },
     { value: "-released", label: "Release date" },
     { value: "-metacritic", label: "Popularity" },
     { value: "-rating", label: "Rating" },
   ];
+  const currentSortOrder = sortOrders.find(
+    (order) => order.value === sortOrder,
+  );
 
   return (
     <div className="dropdown dropdown-hover">
@@ -21,7 +22,7 @@ const SortSelector = ({ onSelectSortOrder, gameQuery }: Props) => {
         tabIndex={0}
         role="button"
         className="btn m-1"
-      >{`Order by: Relevance`}</div>
+      >{`Order by: ${currentSortOrder?.label || "Relevance"}`}</div>
       <ul
         tabIndex={0}
         className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
