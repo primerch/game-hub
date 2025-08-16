@@ -1,12 +1,17 @@
-const SortSelector = () => {
-  const orders = [
-    "Relevance",
-    "Date added",
-    "Name",
-    "Release date",
-    "Popularity",
-    "Average rating",
-  ];
+interface Props {
+  onSelectOrder: (order: string) => void;
+}
+
+const SortSelector = ({ onSelectOrder }: Props) => {
+  const orderMap: Record<string, string> = {
+    relevance: "Relevance",
+    added: "Date added",
+    name: "Name",
+    released: "Release date",
+    popularity: "Popularity",
+    rating: "Rating",
+  };
+
   return (
     <div className="dropdown dropdown-hover">
       <div
@@ -18,9 +23,11 @@ const SortSelector = () => {
         tabIndex={0}
         className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
       >
-        {orders.map((order) => (
-          <li key={order}>
-            <button>{order}</button>
+        {Object.keys(orderMap).map((orderKey) => (
+          <li>
+            <button onClick={() => onSelectOrder(orderKey)}>
+              {orderMap[orderKey]}
+            </button>
           </li>
         ))}
       </ul>
