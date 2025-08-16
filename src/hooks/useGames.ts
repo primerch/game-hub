@@ -5,9 +5,9 @@ import type { GameQuery } from "../App.tsx";
 export interface Game {
   id: number;
   name: string;
-  background_image: string;
+  background_image: string | null;
   parent_platforms: { platform: Platform }[];
-  metacritic: number;
+  metacritic: number | null;
 }
 
 const useGames = (gameQuery: GameQuery) => {
@@ -17,6 +17,7 @@ const useGames = (gameQuery: GameQuery) => {
       params: {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
+        ordering: gameQuery.ordering,
       },
     },
     [gameQuery],
