@@ -45,9 +45,10 @@ function App() {
             }
           />
           <SortSelector
-            onSelectOrder={(orderKey) =>
+            onSelectSortOrder={(orderKey) =>
               setGameQuery({ ...gameQuery, ordering: orderKey })
             }
+            gameQuery={gameQuery}
           />
           <GameGrid gameQuery={gameQuery} />
         </div>
