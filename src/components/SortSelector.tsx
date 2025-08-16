@@ -3,14 +3,14 @@ interface Props {
 }
 
 const SortSelector = ({ onSelectOrder }: Props) => {
-  const orderMap: Record<string, string> = {
-    relevance: "Relevance",
-    added: "Date added",
-    name: "Name",
-    released: "Release date",
-    popularity: "Popularity",
-    rating: "Rating",
-  };
+  const sortOrders = [
+    { value: "relevance", label: "Relevance" },
+    { value: "-added", label: "Date added" },
+    { value: "name", label: "Name" },
+    { value: "release", label: "Release date" },
+    { value: "popularity", label: "Popularity" },
+    { value: "rating", label: "Rating" },
+  ];
 
   return (
     <div className="dropdown dropdown-hover">
@@ -23,10 +23,10 @@ const SortSelector = ({ onSelectOrder }: Props) => {
         tabIndex={0}
         className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
       >
-        {Object.keys(orderMap).map((orderKey) => (
+        {sortOrders.map((order) => (
           <li>
-            <button onClick={() => onSelectOrder(orderKey)}>
-              {orderMap[orderKey]}
+            <button onClick={() => onSelectOrder(order.value)}>
+              {order.label}
             </button>
           </li>
         ))}
