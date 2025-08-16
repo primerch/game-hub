@@ -11,14 +11,14 @@ import SortSelector from "./components/SortSelector.tsx";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
-  ordering: string | null;
+  sortOrder: string | null;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
     genre: null,
     platform: null,
-    ordering: null,
+    sortOrder: null,
   });
 
   return (
@@ -45,8 +45,8 @@ function App() {
             }
           />
           <SortSelector
-            onSelectSortOrder={(orderKey) =>
-              setGameQuery({ ...gameQuery, ordering: orderKey })
+            onSelectSortOrder={(sortOrder) =>
+              setGameQuery({ ...gameQuery, sortOrder: sortOrder })
             }
             gameQuery={gameQuery}
           />
