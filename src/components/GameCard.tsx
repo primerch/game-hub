@@ -18,11 +18,11 @@ const GameCard = ({
         />
       </figure>
       <div className="card-body">
-        <div className="card-title mb-1 text-2xl">{name}</div>
         <div className="flex items-center justify-between">
           <PlatformIconList parent_platforms={parent_platforms} />
           <CriticScore metacritic={metacritic} />
         </div>
+        <div className="card-title mb-1 text-2xl">{name}</div>
       </div>
     </>
   );
