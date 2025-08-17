@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 
 interface Props {
-  handleOnSubmit: (value: string) => void;
+  onSearch: (searchText: string) => void;
 }
 
-const SearchInput = ({ handleOnSubmit }: Props) => {
+const SearchInput = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
@@ -13,7 +13,7 @@ const SearchInput = ({ handleOnSubmit }: Props) => {
         className="grow"
         onSubmit={(e) => {
           e.preventDefault();
-          if (ref.current) handleOnSubmit(ref.current.value);
+          if (ref.current) onSearch(ref.current.value);
         }}
       >
         <label className="input m-1 w-full rounded-4xl">
