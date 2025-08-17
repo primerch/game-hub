@@ -18,7 +18,7 @@ const GameGrid = ({ gameQuery }: Props) => {
   if (loading) {
     return (
       <>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {skeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
               <GameCardSkeleton />
@@ -32,7 +32,7 @@ const GameGrid = ({ gameQuery }: Props) => {
   return (
     <>
       {error && <span>{error}</span>}
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard
