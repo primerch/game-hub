@@ -3,7 +3,7 @@ import React from "react";
 const SearchInput = () => {
   return (
     <>
-      <label className="input m-1 grow">
+      <label className="input m-1 grow rounded-4xl">
         <svg
           className="h-[1em] opacity-50"
           xmlns="http://www.w3.org/2000/svg"
