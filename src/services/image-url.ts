@@ -5,6 +5,7 @@ const getCroppedImageUrl = (url: string | null) => {
   const height = 400;
 
   if (!url) return noImage;
+  if (url.indexOf("screenshot") !== -1) return url;
 
   return (
     url.slice(0, url.indexOf("/games")) +
