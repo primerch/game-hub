@@ -19,7 +19,7 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
       {!loading && (
         <ul className="list bg-base-100 rounded-box shadow-md">
           {data.map((genre) => (
-            <li className="list-row" key={genre.id}>
+            <li className="list-row items-center" key={genre.id}>
               <div>
                 <img
                   className="rounded-box size-10"
@@ -32,7 +32,7 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
                 }
               >
                 <button
-                  className="cursor-pointer"
+                  className="cursor-pointer text-left"
                   onClick={() => onSelectGenre(genre)}
                 >
                   {genre.name}
