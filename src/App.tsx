@@ -45,6 +45,7 @@ function App() {
         </div>
 
         <div className="[grid-area:main]">
+          <GameHeading heading={gameQuery.genre?.name} />
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
             onSelectPlatform={(platform) =>
@@ -57,7 +58,6 @@ function App() {
             }
             sortOrder={gameQuery.sortOrder}
           />
-          <GameHeading heading={gameQuery.genre?.name} />
           <GameGrid gameQuery={gameQuery} />
         </div>
       </div>
