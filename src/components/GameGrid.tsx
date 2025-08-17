@@ -29,23 +29,22 @@ const GameGrid = ({ gameQuery }: Props) => {
     );
   }
 
+  if (error) return <span className="text-error">{error}</span>;
+
   return (
-    <>
-      {error && <span>{error}</span>}
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.map((game) => (
-          <GameCardContainer key={game.id}>
-            <GameCard
-              id={game.id}
-              name={game.name}
-              background_image={game.background_image}
-              parent_platforms={game.parent_platforms}
-              metacritic={game.metacritic}
-            />
-          </GameCardContainer>
-        ))}
-      </div>
-    </>
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {data.map((game) => (
+        <GameCardContainer key={game.id}>
+          <GameCard
+            id={game.id}
+            name={game.name}
+            background_image={game.background_image}
+            parent_platforms={game.parent_platforms}
+            metacritic={game.metacritic}
+          />
+        </GameCardContainer>
+      ))}
+    </div>
   );
 };
 export default GameGrid;
