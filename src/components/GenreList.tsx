@@ -16,6 +16,7 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
 
   return (
     <>
+      <h1 className="mg-3 text-center text-2xl font-bold">Genres</h1>
       {!loading && (
         <ul className="list bg-base-100 rounded-box shadow-md">
           {data.map((genre) => (
@@ -31,10 +32,7 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
                   selectedGenre?.id === genre.id ? "font-bold" : "font-normal"
                 }
               >
-                <button
-                  className="cursor-pointer text-left"
-                  onClick={() => onSelectGenre(genre)}
-                >
+                <button onClick={() => onSelectGenre(genre)}>
                   {genre.name}
                 </button>
               </div>
