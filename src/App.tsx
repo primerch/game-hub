@@ -12,6 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  search: string;
 }
 
 function App() {
@@ -19,13 +20,18 @@ function App() {
     genre: null,
     platform: null,
     sortOrder: "",
+    search: "",
   });
 
   return (
     <>
       <div className="grid [grid-template-areas:'nav''main'] lg:grid-cols-[200px_1fr] lg:[grid-template-areas:'nav_nav''aside_main']">
         <div className="[grid-area:nav]">
-          <NavBar />
+          <NavBar
+            handleOnSubmit={(value) =>
+              setGameQuery({ ...gameQuery, search: value })
+            }
+          />
         </div>
 
         <div className="hidden [grid-area:aside] lg:block">
