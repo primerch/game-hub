@@ -45,7 +45,10 @@ function App() {
         </div>
 
         <div className="[grid-area:main]">
-          <GameHeading heading={gameQuery.genre?.name} />
+          <GameHeading
+            platform={gameQuery.platform?.name}
+            genre={gameQuery.genre?.name}
+          />
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
             onSelectPlatform={(platform) =>

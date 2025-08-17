@@ -1,10 +1,11 @@
 interface Props {
-  heading: string | undefined;
+  platform: string | undefined;
+  genre: string | undefined;
 }
 
-const GameHeading = ({ heading }: Props) => {
-  if (!heading) return;
-  return <h1 className="text-9xl">{heading}</h1>;
+const GameHeading = ({ platform, genre }: Props) => {
+  if (!platform || !genre) return;
+  return <h1 className="text-5xl">{`${platform} ${genre} Game`}</h1>;
 };
 
 export default GameHeading;
