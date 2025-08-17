@@ -32,7 +32,10 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
                   selectedGenre?.id === genre.id ? "font-bold" : "font-normal"
                 }
               >
-                <button onClick={() => onSelectGenre(genre)}>
+                <button
+                  className="text-left"
+                  onClick={() => onSelectGenre(genre)}
+                >
                   {genre.name}
                 </button>
               </div>
