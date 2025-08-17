@@ -3,14 +3,14 @@ import ColorModeSwitch from "./ColorModeSwitch.tsx";
 import SearchInput from "./SearchInput.tsx";
 
 interface Props {
-  onSearch: (searchText: string) => void;
+  handleOnSubmit: (value: string) => void;
 }
 
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = ({ handleOnSubmit }: Props) => {
   return (
     <div className="flex justify-between p-2.5">
       <img src={logo} alt="" className="w-12" />
-      <SearchInput onSearch={onSearch} />
+      <SearchInput handleOnSubmit={(value) => handleOnSubmit(value)} />
       <ColorModeSwitch />
     </div>
   );

@@ -12,7 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
-  searchText: string;
+  search: string;
 }
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     genre: null,
     platform: null,
     sortOrder: "",
-    searchText: "",
+    search: "",
   });
 
   return (
@@ -28,8 +28,8 @@ function App() {
       <div className="grid [grid-template-areas:'nav''main'] lg:grid-cols-[200px_1fr] lg:[grid-template-areas:'nav_nav''aside_main']">
         <div className="[grid-area:nav]">
           <NavBar
-            onSearch={(searchText) =>
-              setGameQuery({ ...gameQuery, searchText })
+            handleOnSubmit={(value) =>
+              setGameQuery({ ...gameQuery, search: value })
             }
           />
         </div>
