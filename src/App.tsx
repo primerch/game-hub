@@ -7,7 +7,7 @@ import { type Genre } from "./hooks/useGenres.ts";
 import PlatformSelector from "./components/PlatformSelector.tsx";
 import type { Platform } from "./components/PlatformIconList.tsx";
 import SortSelector from "./components/SortSelector.tsx";
-import GameHeading from "@/components/GameHeading.tsx";
+import GameHeading from "./components/GameHeading.tsx";
 
 export interface GameQuery {
   genre: Genre | null;
