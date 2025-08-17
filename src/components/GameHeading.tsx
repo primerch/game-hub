@@ -1,11 +1,13 @@
+import type { GameQuery } from "../App.tsx";
+
 interface Props {
-  platform: string | undefined;
-  genre: string | undefined;
+  gameQuery: GameQuery;
 }
 
-const GameHeading = ({ platform, genre }: Props) => {
-  if (!platform || !genre) return;
-  return <h1 className="text-5xl">{`${platform} ${genre} Game`}</h1>;
+const GameHeading = ({ gameQuery }: Props) => {
+  return (
+    <h1 className="text-5xl font-bold">{`${gameQuery.platform?.name ?? ""} ${gameQuery.genre?.name ?? ""} Games`}</h1>
+  );
 };
 
 export default GameHeading;
