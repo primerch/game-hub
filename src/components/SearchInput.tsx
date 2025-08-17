@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 interface Props {
   handleOnSubmit: (value: string) => void;
 }
 
 const SearchInput = ({ handleOnSubmit }: Props) => {
-  const [search, setSearch] = useState("");
+  const ref = useRef<HTMLInputElement>(null);
+
   return (
     <>
       <form
+        className="grow"
         onSubmit={(e) => {
           e.preventDefault();
-          handleOnSubmit(search);
+          if (ref.current) handleOnSubmit(ref.current.value);
         }}
       >
-        <label className="input m-1 grow rounded-4xl">
+        <label className="input m-1 w-full rounded-4xl">
           <svg
             className="h-[1em] opacity-50"
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +34,7 @@ const SearchInput = ({ handleOnSubmit }: Props) => {
             </g>
           </svg>
           <input
-            onChange={(e) => setSearch(e.target.value)}
+            ref={ref}
             type="search"
             className="grow"
             placeholder="Search"
