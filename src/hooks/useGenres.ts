@@ -1,5 +1,3 @@
-// import genres from "../data/genres";
-
 import apiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 
@@ -19,9 +17,7 @@ const useGenres = () => {
   return useQuery<Genre[], Error>({
     queryKey: ["genres"],
     queryFn: () =>
-      apiClient.get<GenreResponse>("/genres").then((res) => {
-        return res.data.results;
-      }),
+      apiClient.get<GenreResponse>("/genres").then((res) => res.data.results),
   });
 };
 

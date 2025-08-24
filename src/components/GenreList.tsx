@@ -8,19 +8,19 @@ interface Props {
 }
 
 const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
-  const { data, error, isLoading } = useGenres();
-  console.log(data);
+  const { data, error, isPending } = useGenres();
 
   const selectedGenre = gameQuery?.genre;
 
-  if (error) return null;
-  if (isLoading)
+  if (isPending)
     return <span className="loading loading-dots loading-xl"></span>;
+
+  if (error) return null;
 
   return (
     <>
       <h1 className="mg-3 text-center text-2xl font-bold">Genres</h1>
-      {!isLoading && (
+      {!isPending && (
         <ul className="list bg-base-100 rounded-box shadow-md">
           {data?.map((genre) => (
             <li className="list-row items-center" key={genre.id}>
