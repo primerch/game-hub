@@ -8,8 +8,6 @@ interface FetchResponse<T> {
 }
 
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig) => {
-  console.log("output: ");
-  console.log(requestConfig);
   return useQuery<T[]>({
     queryKey: [endpoint],
     queryFn: () =>
