@@ -1,3 +1,4 @@
+import React from 'react';
 import type { GameQuery } from '../App.tsx';
 import useGames from '../hooks/useGames.ts';
 import GameCard from './GameCard.tsx';
@@ -9,8 +10,15 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { data, isPending, isError, error, fetchNextPage } =
-    useGames(gameQuery);
+  const {
+    data,
+    isPending,
+    isError,
+    error,
+    isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
+  } = useGames(gameQuery);
 
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -34,8 +42,8 @@ const GameGrid = ({ gameQuery }: Props) => {
   return (
     <>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data?.pages.map((page) => (
-          <>
+        {data?.pages.map((page, index) => (
+          <React.Fragment key={index}>
             {page?.results.map((game) => (
               <GameCardContainer key={game.id}>
                 <GameCard
@@ -47,16 +55,17 @@ const GameGrid = ({ gameQuery }: Props) => {
                 />
               </GameCardContainer>
             ))}
-          </>
+          </React.Fragment>
         ))}
       </div>
       <button
         className="btn ml-5"
+        disabled={!hasNextPage}
         onClick={() => {
           fetchNextPage();
         }}
       >
-        Load More
+        {isFetchingNextPage ? 'Loading...' : 'Load More'}
       </button>
     </>
   );
