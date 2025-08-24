@@ -58,15 +58,17 @@ const GameGrid = ({ gameQuery }: Props) => {
           </React.Fragment>
         ))}
       </div>
-      <button
-        className="btn ml-5"
-        disabled={!hasNextPage}
-        onClick={() => {
-          fetchNextPage();
-        }}
-      >
-        {isFetchingNextPage ? 'Loading...' : 'Load More'}
-      </button>
+      {hasNextPage && (
+        <button
+          className="btn ml-2"
+          disabled={!hasNextPage}
+          onClick={() => {
+            fetchNextPage();
+          }}
+        >
+          {isFetchingNextPage ? 'Loading...' : 'Load More'}
+        </button>
+      )}
     </>
   );
 };
