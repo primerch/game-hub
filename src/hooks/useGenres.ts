@@ -10,10 +10,11 @@ export interface Genre {
   image_background: string;
 }
 
+const apiClient = new APIClient<Genre>('genres');
+
 const staleTime = 24 * 60 * 60 * 1000;
 
 const useGenres = () => {
-  const apiClient = new APIClient<Genre>('genres');
   return useQuery<FetchResponse<Genre>>({
     queryKey: ['genres'],
     queryFn: () => apiClient.getAll(),

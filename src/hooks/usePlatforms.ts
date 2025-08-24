@@ -9,8 +9,9 @@ interface Platform {
   slug: string;
 }
 
+const apiClient = new APIClient<Platform>('platforms');
+
 const usePlatforms = () => {
-  const apiClient = new APIClient<Platform>('platforms');
   return useQuery<FetchResponse<Platform>>({
     queryKey: ['platforms'],
     queryFn: () => apiClient.getAll(),

@@ -12,9 +12,9 @@ export interface Game {
   metacritic: number;
 }
 
-const useGames = (gameQuery: GameQuery) => {
-  const apiClient = new APIClient<Game>('/games');
+const apiClient = new APIClient<Game>('/games');
 
+const useGames = (gameQuery: GameQuery) => {
   return useQuery<FetchResponse<Game>>({
     queryKey: ['games', gameQuery],
 
