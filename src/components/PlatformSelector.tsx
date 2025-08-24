@@ -1,6 +1,6 @@
+import type { GameQuery } from "../App.tsx";
 import usePlatforms from "../hooks/usePlatforms.ts";
 import type { Platform } from "./PlatformIconList.tsx";
-import type { GameQuery } from "../App.tsx";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
@@ -21,7 +21,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         tabIndex={0}
         className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
       >
-        {data.map((platform) => (
+        {data?.map((platform) => (
           <li key={platform.id}>
             <button onClick={() => onSelectPlatform(platform)}>
               {platform.name}
