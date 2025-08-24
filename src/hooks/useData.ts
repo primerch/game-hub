@@ -1,8 +1,8 @@
-import apiClient from "@/services/api-client";
-import { useQuery } from "@tanstack/react-query";
-import type { AxiosRequestConfig } from "axios";
+import apiClient from '@/services/api-client';
+import { useQuery } from '@tanstack/react-query';
+import type { AxiosRequestConfig } from 'axios';
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
 }

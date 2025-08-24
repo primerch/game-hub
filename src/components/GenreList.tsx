@@ -1,6 +1,6 @@
-import type { Genre } from "@/hooks/useGenres.ts";
-import useGenres from "@/hooks/useGenres.ts";
-import type { GameQuery } from "../App.tsx";
+import type { Genre } from '@/hooks/useGenres.ts';
+import useGenres from '@/hooks/useGenres.ts';
+import type { GameQuery } from '../App.tsx';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
@@ -22,7 +22,7 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
       <h1 className="mg-3 text-center text-2xl font-bold">Genres</h1>
       {!isPending && (
         <ul className="list bg-base-100 rounded-box shadow-md">
-          {data?.map((genre) => (
+          {data?.results.map((genre) => (
             <li className="list-row items-center" key={genre.id}>
               <div>
                 <img
@@ -32,7 +32,7 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
               </div>
               <div
                 className={
-                  selectedGenre?.id === genre.id ? "font-bold" : "font-normal"
+                  selectedGenre?.id === genre.id ? 'font-bold' : 'font-normal'
                 }
               >
                 <button
