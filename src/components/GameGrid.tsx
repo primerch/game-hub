@@ -61,7 +61,6 @@ const GameGrid = ({ gameQuery }: Props) => {
       {hasNextPage && (
         <button
           className="btn ml-2"
-          disabled={!hasNextPage}
           onClick={() => {
             fetchNextPage();
           }}
