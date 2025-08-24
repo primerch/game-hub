@@ -7,13 +7,20 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig) => {
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  staleTime?: number,
+  initialData?: T[],
+) => {
   return useQuery<T[]>({
     queryKey: [endpoint],
     queryFn: () =>
       apiClient
         .get<FetchResponse<T>>(endpoint, requestConfig)
         .then((res) => res.data.results),
+    staleTime: staleTime,
+    initialData: initialData,
   });
 };
 

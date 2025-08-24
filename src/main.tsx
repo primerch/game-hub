@@ -6,6 +6,9 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
+/**========================================================================
+ *                           main.tsx
+ *========================================================================**/
 const queryClient = new QueryClient({});
 
 // This code is only for TypeScript
