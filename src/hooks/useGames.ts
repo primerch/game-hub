@@ -1,6 +1,8 @@
-import type { GameQuery } from "../App.tsx";
-import type { Platform } from "../components/PlatformIconList.tsx";
-import useData from "./useData.ts";
+import type { GameQuery } from '@/App.tsx';
+import type { FetchResponse } from '@/services/api-client.ts';
+import apiClient from '@/services/api-client.ts';
+import { useQuery } from '@tanstack/react-query';
+import type { Platform } from '../components/PlatformIconList.tsx';
 
 export interface Game {
   id: number;
@@ -11,13 +13,20 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) => {
-  return useData<Game>("/games", {
-    params: {
-      genres: gameQuery.genre?.id,
-      platforms: gameQuery.platform?.id,
-      ordering: gameQuery.sortOrder,
-      search: gameQuery.search,
-    },
+  console.log(gameQuery);
+  return useQuery<FetchResponse<Game>>({
+    queryKey: ['games', gameQuery],
+    queryFn: () =>
+      apiClient
+        .get<FetchResponse<Game>>('/games', {
+          params: {
+            genres: gameQuery.genre?.id,
+            parent_platforms: gameQuery.platform?.id,
+            ordering: gameQuery.sortOrder,
+            search: gameQuery.search,
+          },
+        })
+        .then((res) => res.data),
   });
 };
 

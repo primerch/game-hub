@@ -1,8 +1,8 @@
-import type { GameQuery } from "../App.tsx";
-import useGames from "../hooks/useGames.ts";
-import GameCard from "./GameCard.tsx";
-import GameCardContainer from "./GameCardContainer.tsx";
-import GameCardSkeleton from "./GameCardSkeleton.tsx";
+import type { GameQuery } from '../App.tsx';
+import useGames from '../hooks/useGames.ts';
+import GameCard from './GameCard.tsx';
+import GameCardContainer from './GameCardContainer.tsx';
+import GameCardSkeleton from './GameCardSkeleton.tsx';
 
 interface Props {
   gameQuery: GameQuery;
@@ -32,7 +32,7 @@ const GameGrid = ({ gameQuery }: Props) => {
 
   return (
     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {data?.map((game) => (
+      {data?.results.map((game) => (
         <GameCardContainer key={game.id}>
           <GameCard
             id={game.id}
