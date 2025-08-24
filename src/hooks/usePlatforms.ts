@@ -10,10 +10,10 @@ interface Platform {
 }
 
 const usePlatforms = () => {
-  const apiClient = new APIClient('platforms');
+  const apiClient = new APIClient<Platform>('platforms');
   return useQuery<FetchResponse<Platform>>({
     queryKey: ['platforms'],
-    queryFn: () => apiClient.getAll<Platform>(),
+    queryFn: () => apiClient.getAll(),
     initialData: { count: platforms.length, results: platforms },
     staleTime: 24 * 60 * 60 * 1000,
   });

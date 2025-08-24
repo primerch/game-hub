@@ -13,10 +13,10 @@ export interface Genre {
 const staleTime = 24 * 60 * 60 * 1000;
 
 const useGenres = () => {
-  const apiClient = new APIClient('genres');
+  const apiClient = new APIClient<Genre>('genres');
   return useQuery<FetchResponse<Genre>>({
     queryKey: ['genres'],
-    queryFn: () => apiClient.getAll<Genre>(),
+    queryFn: () => apiClient.getAll(),
     initialData: { count: genres.length, results: genres },
     staleTime: staleTime,
   });

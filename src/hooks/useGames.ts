@@ -13,13 +13,13 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) => {
-  const apiClient = new APIClient('/games');
+  const apiClient = new APIClient<Game>('/games');
 
   return useQuery<FetchResponse<Game>>({
     queryKey: ['games', gameQuery],
 
     queryFn: () =>
-      apiClient.getAll<Game>({
+      apiClient.getAll({
         params: {
           genres: gameQuery.genre?.id,
           parent_platforms: gameQuery.platform?.id,

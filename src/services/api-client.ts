@@ -5,13 +5,6 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
-// export default axios.create({
-//   baseURL: 'https://api.rawg.io/api',
-//   params: {
-//     key: '1cbdb12bb7b94512b3428b28369ff52c',
-//   },
-// });
-
 const axiosInstance = axios.create({
   baseURL: 'https://api.rawg.io/api',
   params: {
@@ -19,14 +12,14 @@ const axiosInstance = axios.create({
   },
 });
 
-class APIClient {
+class APIClient<T> {
   endpoint: string;
 
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
 
-  getAll<T>(gameQuery?: AxiosRequestConfig) {
+  getAll(gameQuery?: AxiosRequestConfig) {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, gameQuery)
       .then((res) => res.data);
