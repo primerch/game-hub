@@ -1,16 +1,15 @@
-import { useState } from "react";
-import "./App.css";
-import GameGrid from "./components/GameGrid.tsx";
-import GameHeading from "./components/GameHeading.tsx";
-import GenreList from "./components/GenreList.tsx";
-import NavBar from "./components/NavBar.tsx";
-import type { Platform } from "./components/PlatformIconList.tsx";
-import PlatformSelector from "./components/PlatformSelector.tsx";
-import SortSelector from "./components/SortSelector.tsx";
-import { type Genre } from "./hooks/useGenres.ts";
+import { useState } from 'react';
+import './App.css';
+import GameGrid from './components/GameGrid.tsx';
+import GameHeading from './components/GameHeading.tsx';
+import GenreList from './components/GenreList.tsx';
+import NavBar from './components/NavBar.tsx';
+import type { Platform } from './components/PlatformIconList.tsx';
+import PlatformSelector from './components/PlatformSelector.tsx';
+import SortSelector from './components/SortSelector.tsx';
 
 export interface GameQuery {
-  genre: Genre | null;
+  genre_id: number | null;
   platform: Platform | null;
   sortOrder: string;
   search: string;
@@ -18,10 +17,10 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
-    genre: null,
+    genre_id: null,
     platform: null,
-    sortOrder: "",
-    search: "",
+    sortOrder: '',
+    search: '',
   });
 
   return (
@@ -39,7 +38,7 @@ function App() {
           <GenreList
             gameQuery={gameQuery}
             onSelectGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genre: genre })
+              setGameQuery({ ...gameQuery, genre_id: genre.id })
             }
           />
         </div>
