@@ -1,22 +1,28 @@
+import useGenres from '@/hooks/useGenres.ts';
+import usePlatforms from '@/hooks/usePlatforms.ts';
 import type { GameQuery } from '../App.tsx';
 
 interface Props {
   gameQuery: GameQuery;
 }
 
-import genres from '../data/genres.ts';
-import platforms from '../data/platforms.ts';
+// import genres from '../data/genres.ts';
+// import platforms from '../data/platforms.ts';
 
 const GameHeading = ({ gameQuery }: Props) => {
-  const { platform_id, genre_id } = gameQuery;
+  const { data: genres } = useGenres();
+  const { data: platforms } = usePlatforms();
 
-  const genre_name = genres.find((genre) => genre.id === genre_id)?.name;
-  const platform_name = platforms.find(
+  const { platform_id, genreId } = gameQuery;
+
+  const genreName = genres?.results.find((genre) => genre.id === genreId)?.name;
+
+  const platformName = platforms.results.find(
     (platform) => platform.id === platform_id,
   )?.name;
 
   return (
-    <h1 className="text-5xl font-bold">{`${platform_name ?? ''} ${genre_name ?? ''} Games`}</h1>
+    <h1 className="text-5xl font-bold">{`${platformName ?? ''} ${genreName ?? ''} Games`}</h1>
   );
 };
 

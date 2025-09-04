@@ -1,16 +1,13 @@
 import type { Genre } from '@/hooks/useGenres.ts';
 import useGenres from '@/hooks/useGenres.ts';
-import type { GameQuery } from '../App.tsx';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  gameQuery: GameQuery;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
   const { data, error, isPending } = useGenres();
-
-  const selectedGenre = gameQuery?.genre;
 
   if (isPending)
     return <span className="loading loading-dots loading-xl"></span>;
@@ -32,7 +29,7 @@ const GenreList = ({ gameQuery, onSelectGenre }: Props) => {
               </div>
               <div
                 className={
-                  selectedGenre?.id === genre.id ? 'font-bold' : 'font-normal'
+                  selectedGenreId === genre.id ? 'font-bold' : 'font-normal'
                 }
               >
                 <button

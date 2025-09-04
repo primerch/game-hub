@@ -8,16 +8,16 @@ import PlatformSelector from './components/PlatformSelector.tsx';
 import SortSelector from './components/SortSelector.tsx';
 
 export interface GameQuery {
-  genre_id: number | null;
-  platform_id: number | null;
+  genreId?: number;
+  platform_id?: number;
   sortOrder: string;
   search: string;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
-    genre_id: null,
-    platform_id: null,
+    genreId: undefined,
+    platform_id: undefined,
     sortOrder: '',
     search: '',
   });
@@ -35,9 +35,9 @@ function App() {
 
         <div className="hidden [grid-area:aside] lg:block">
           <GenreList
-            gameQuery={gameQuery}
+            selectedGenreId={gameQuery.genreId}
             onSelectGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genre_id: genre.id })
+              setGameQuery({ ...gameQuery, genreId: genre.id })
             }
           />
         </div>
