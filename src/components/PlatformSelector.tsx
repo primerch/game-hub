@@ -1,21 +1,24 @@
-import type { GameQuery } from '../App.tsx';
 import usePlatforms from '../hooks/usePlatforms.ts';
 import type { Platform } from './PlatformIconList.tsx';
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: GameQuery['platform'];
+  selectedPlatformId?: number;
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
+const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
   const { data, isError } = usePlatforms();
+
+  const selectedPlatform = data.results.find(
+    (p) => p.id === selectedPlatformId,
+  );
 
   if (isError) return null;
 
   return (
     <div className="dropdown dropdown-hover">
       <div tabIndex={0} role="button" className="btn m-1">
-        {selectedPlatform?.name || 'Platform'}
+        {selectedPlatform?.name ?? 'Platform'}
       </div>
       <ul
         tabIndex={0}

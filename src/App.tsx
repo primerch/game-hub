@@ -9,7 +9,7 @@ import SortSelector from './components/SortSelector.tsx';
 
 export interface GameQuery {
   genreId?: number;
-  platform_id?: number;
+  platformId?: number;
   sortOrder: string;
   search: string;
 }
@@ -17,7 +17,7 @@ export interface GameQuery {
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
     genreId: undefined,
-    platform_id: undefined,
+    platformId: undefined,
     sortOrder: '',
     search: '',
   });
@@ -45,9 +45,9 @@ function App() {
         <div className="[grid-area:main]">
           <GameHeading gameQuery={gameQuery} />
           <PlatformSelector
-            selectedPlatform={gameQuery.platform_id}
+            selectedPlatformId={gameQuery.platformId}
             onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform_id: platform.id })
+              setGameQuery({ ...gameQuery, platformId: platform.id })
             }
           />
           <SortSelector
