@@ -12,12 +12,12 @@ const GameHeading = ({ gameQuery }: Props) => {
 
   const { platformId, genreId } = gameQuery;
 
-  const genreName = genres?.results.find((genre) => genre.id === genreId)?.name;
+  const genre = genres?.results.find((genre) => genre.id === genreId);
 
   const platformName = platforms.results.find((p) => p.id === platformId)?.name;
 
   return (
-    <h1 className="text-5xl font-bold">{`${platformName ?? ''} ${genreName ?? ''} Games`}</h1>
+    <h1 className="text-5xl font-bold">{`${platformName ?? ''} ${genre?.name ?? ''} Games`}</h1>
   );
 };
 
