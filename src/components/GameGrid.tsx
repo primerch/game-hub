@@ -23,7 +23,7 @@ const GameGrid = ({ gameQuery }: Props) => {
   const observeRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // If we're already fetching, there's no next page, or the ref is not yet attached, we do nothing.
+    // If there's no next page, or the ref is not yet attached, we do nothing.
     if (!hasNextPage || !observeRef.current) {
       return;
     }
@@ -85,18 +85,10 @@ const GameGrid = ({ gameQuery }: Props) => {
           </React.Fragment>
         ))}
       </div>
-      {/* {hasNextPage && (
-        <button
-          className="btn ml-2"
-          onClick={() => {
-            fetchNextPage();
-          }}
-        >
-          {isFetchingNextPage ? 'Loading...' : 'Load More'}
-        </button>
-      )} */}
 
-      <div ref={observeRef}></div>
+      <div ref={observeRef} style={{ height: '1px' }}>
+        {isFetchingNextPage ? <span>Loading more...</span> : ''}
+      </div>
     </>
   );
 };
