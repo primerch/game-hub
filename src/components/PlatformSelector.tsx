@@ -1,3 +1,4 @@
+import usePlatform from '@/hooks/usePlatform.ts';
 import usePlatforms from '../hooks/usePlatforms.ts';
 import type { Platform } from './PlatformIconList.tsx';
 
@@ -8,10 +9,7 @@ interface Props {
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
   const { data, isError } = usePlatforms();
-
-  const selectedPlatform = data.results.find(
-    (p) => p.id === selectedPlatformId,
-  );
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   if (isError) return null;
 
