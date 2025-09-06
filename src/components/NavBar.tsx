@@ -2,10 +2,6 @@ import logo from '../assets/logo.webp';
 import ColorModeSwitch from './ColorModeSwitch.tsx';
 import SearchInput from './SearchInput.tsx';
 
-interface Props {
-  handleOnSubmit: (value: string) => void;
-}
-
 const NavBar = () => {
   return (
     <div className="flex justify-between p-2.5">
