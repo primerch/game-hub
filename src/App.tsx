@@ -5,7 +5,6 @@ import GenreList from './components/GenreList.tsx';
 import NavBar from './components/NavBar.tsx';
 import PlatformSelector from './components/PlatformSelector.tsx';
 import SortSelector from './components/SortSelector.tsx';
-import useGameQueryStore from './store.ts';
 
 function App() {
   return (
@@ -20,10 +19,10 @@ function App() {
         </div>
 
         <div className="[grid-area:main]">
-          <GameHeading  />
-          <PlatformSelector  />
-          <SortSelector  />
-          <GameGrid gameQuery={gameQuery} />
+          <GameHeading />
+          <PlatformSelector />
+          <SortSelector />
+          <GameGrid />
         </div>
       </div>
     </>

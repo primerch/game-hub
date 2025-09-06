@@ -5,9 +5,7 @@ import usePlatforms from '../hooks/usePlatforms.ts';
 const PlatformSelector = () => {
   const { data, isError } = usePlatforms();
 
-  const setPlatformId = useGameQueryStore((s) => s.setPlatformId);
-
-  
+  const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformId);
   const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
   const selectedPlatform = usePlatform(selectedPlatformId);
 
@@ -24,7 +22,7 @@ const PlatformSelector = () => {
       >
         {data?.results.map((platform) => (
           <li key={platform.id}>
-            <button onClick={() => setPlatformId(platform.id)}>
+            <button onClick={() => setSelectedPlatformId(platform.id)}>
               {platform.name}
             </button>
           </li>

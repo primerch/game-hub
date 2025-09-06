@@ -29,7 +29,6 @@ const SortSelector = () => {
       >
         {sortOrders.map((order) => (
           <li key={order.value}>
-            {/* <button onClick={() => onSelectSortOrder(order.value)}> */}
             <button onClick={() => setSortOrder(order.value)}>
               {order.label}
             </button>

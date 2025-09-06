@@ -1,15 +1,12 @@
+import useGameQueryStore from '@/store.ts';
 import React, { useEffect, useRef } from 'react';
-import type { GameQuery } from '../App.tsx';
 import useGames from '../hooks/useGames.ts';
 import GameCard from './GameCard.tsx';
 import GameCardContainer from './GameCardContainer.tsx';
 import GameCardSkeleton from './GameCardSkeleton.tsx';
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGrid = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
   const {
     data,
     isPending,
@@ -18,7 +15,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     isFetchingNextPage,
     hasNextPage,
     fetchNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
 
   const observeRef = useRef<HTMLDivElement | null>(null);
 

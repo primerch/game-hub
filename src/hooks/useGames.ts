@@ -1,5 +1,5 @@
-import type { GameQuery } from '@/App.tsx';
 import APIClient from '@/services/api-client.ts';
+import useGameQueryStore from '@/store.ts';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import type { Platform } from '../components/PlatformIconList.tsx';
 
@@ -13,7 +13,8 @@ export interface Game {
 
 const apiClient = new APIClient<Game>('/games');
 
-const useGames = (gameQuery: GameQuery) => {
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
   const page_size = 12;
 
   return useInfiniteQuery({
@@ -25,7 +26,7 @@ const useGames = (gameQuery: GameQuery) => {
           genres: gameQuery.genreId,
           parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
-          search: gameQuery.search,
+          search: gameQuery.searchText,
           page: pageParam,
           page_size,
         },
