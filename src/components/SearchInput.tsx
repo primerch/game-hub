@@ -1,10 +1,13 @@
-import React, { useRef } from "react";
+import useGameQueryStore from '@/store';
+import { useRef } from 'react';
 
 interface Props {
   handleOnSubmit: (value: string) => void;
 }
 
-const SearchInput = ({ handleOnSubmit }: Props) => {
+const SearchInput = () => {
+  const { setSearchText } = useGameQueryStore();
+
   const ref = useRef<HTMLInputElement>(null);
 
   return (
@@ -13,7 +16,8 @@ const SearchInput = ({ handleOnSubmit }: Props) => {
         className="grow"
         onSubmit={(e) => {
           e.preventDefault();
-          if (ref.current) handleOnSubmit(ref.current.value);
+          // if (ref.current)           handleOnSubmit(ref.current.value);
+          if (ref.current) setSearchText(ref.current.value);
         }}
       >
         <label className="input m-1 w-full rounded-4xl">

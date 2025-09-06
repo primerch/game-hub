@@ -1,13 +1,13 @@
 import usePlatform from '@/hooks/usePlatform.ts';
+import useGameQueryStore from '@/store.ts';
 import usePlatforms from '../hooks/usePlatforms.ts';
-import type { Platform } from './PlatformIconList.tsx';
 
 interface Props {
-  onSelectPlatform: (platform: Platform) => void;
   selectedPlatformId?: number;
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
+const PlatformSelector = ({ selectedPlatformId }: Props) => {
+  const { setPlatformId } = useGameQueryStore();
   const { data, isError } = usePlatforms();
   const selectedPlatform = usePlatform(selectedPlatformId);
 
@@ -24,7 +24,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
       >
         {data?.results.map((platform) => (
           <li key={platform.id}>
-            <button onClick={() => onSelectPlatform(platform)}>
+            <button onClick={() => setPlatformId(platform.id)}>
               {platform.name}
             </button>
           </li>

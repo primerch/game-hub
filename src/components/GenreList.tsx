@@ -1,12 +1,12 @@
-import type { Genre } from '@/hooks/useGenres.ts';
 import useGenres from '@/hooks/useGenres.ts';
+import useGameQueryStore from '@/store';
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
   selectedGenreId?: number;
 }
 
-const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenreId }: Props) => {
+  const { setGenreId } = useGameQueryStore();
   const { data, error, isPending } = useGenres();
 
   if (isPending)
@@ -34,7 +34,7 @@ const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
               >
                 <button
                   className="text-left"
-                  onClick={() => onSelectGenre(genre)}
+                  onClick={() => setGenreId(genre.id)}
                 >
                   {genre.name}
                 </button>
