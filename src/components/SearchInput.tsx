@@ -1,12 +1,8 @@
 import useGameQueryStore from '@/store';
 import { useRef } from 'react';
 
-interface Props {
-  handleOnSubmit: (value: string) => void;
-}
-
 const SearchInput = () => {
-  const { setSearchText } = useGameQueryStore();
+  const setSearchText = useGameQueryStore((s) => s.setSearchText);
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -16,7 +12,6 @@ const SearchInput = () => {
         className="grow"
         onSubmit={(e) => {
           e.preventDefault();
-          // if (ref.current)           handleOnSubmit(ref.current.value);
           if (ref.current) setSearchText(ref.current.value);
         }}
       >

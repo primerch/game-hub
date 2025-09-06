@@ -17,7 +17,7 @@ function App() {
         </div>
 
         <div className="hidden [grid-area:aside] lg:block">
-          <GenreList selectedGenreId={gameQuery.genreId} />
+          <GenreList />
         </div>
 
         <div className="[grid-area:main]">
