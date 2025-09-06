@@ -2,13 +2,13 @@ import usePlatform from '@/hooks/usePlatform.ts';
 import useGameQueryStore from '@/store.ts';
 import usePlatforms from '../hooks/usePlatforms.ts';
 
-interface Props {
-  selectedPlatformId?: number;
-}
-
-const PlatformSelector = ({ selectedPlatformId }: Props) => {
-  const { setPlatformId } = useGameQueryStore();
+const PlatformSelector = () => {
   const { data, isError } = usePlatforms();
+
+  const setPlatformId = useGameQueryStore((s) => s.setPlatformId);
+
+  
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
   const selectedPlatform = usePlatform(selectedPlatformId);
 
   if (isError) return null;

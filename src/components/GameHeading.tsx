@@ -1,14 +1,13 @@
 import useGenre from '@/hooks/useGenre.ts';
 import usePlatform from '@/hooks/usePlatform.ts';
-import type { GameQuery } from '../App.tsx';
+import useGameQueryStore from '@/store';
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameHeading = ({ gameQuery }: Props) => {
-  const platform = usePlatform(gameQuery.platformId);
-  const genre = useGenre(gameQuery.genreId);
+const GameHeading = () => {
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const genre = useGenre(selectedGenreId);
+  
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const platform = usePlatform(selectedPlatformId);
 
   return (
     <h1 className="text-5xl font-bold">{`${platform?.name ?? ''} ${genre?.name ?? ''} Games`}</h1>
