@@ -1,3 +1,4 @@
+import NavBar from '@/components/NavBar';
 import { isRouteErrorResponse, useRouteError } from 'react-router';
 
 function ErrorPage() {
@@ -5,13 +6,16 @@ function ErrorPage() {
 
   return (
     <>
-      <h1 className="text-error text-3xl">Oops</h1>
+      <NavBar />
 
-      <p>
-        {isRouteErrorResponse(error)
-          ? 'This page does not exists.'
-          : 'Sorry, an unexpected error has occurred.'}
-      </p>
+      <div className="mx-3">
+        <h1 className="text-error text-3xl">Oops</h1>
+        <p>
+          {isRouteErrorResponse(error)
+            ? 'This page does not exists.'
+            : 'Sorry, an unexpected error has occurred.'}
+        </p>
+      </div>
     </>
   );
 }
