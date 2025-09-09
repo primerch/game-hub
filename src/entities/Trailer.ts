@@ -5,5 +5,5 @@ export interface Trailer {
     480: string;
     max: string;
   };
-  preview: string; // trailer url
+  preview: string;
 }

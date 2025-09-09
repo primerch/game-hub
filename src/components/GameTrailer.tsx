@@ -1,9 +1,15 @@
+import useTrailers from '@/hooks/useTrailers';
+
 interface Props {
-  trailer: string;
+  gameId: number;
 }
 
-const GameTrailer = ({ trailer: preview }: Props) => {
-  return <video className="w-full" src={preview} controls autoPlay></video>;
+const GameTrailer = ({ gameId }: Props) => {
+  const { data } = useTrailers(gameId);
+
+  const trailerUrl = data?.results[0].data[480];
+
+  return <video className="w-full" src={trailerUrl} controls autoPlay></video>;
 };
 
 export default GameTrailer;
