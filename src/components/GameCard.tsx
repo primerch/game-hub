@@ -1,7 +1,7 @@
-import type { Game } from "../hooks/useGames";
-import PlatformIconList from "./PlatformIconList.tsx";
-import CriticScore from "./CriticScore.tsx";
-import getCroppedImageUrl from "../services/image-url.ts";
+import type { Game } from '@/entities/Game.ts';
+import getCroppedImageUrl from '../services/image-url.ts';
+import CriticScore from './CriticScore.tsx';
+import PlatformIconList from './PlatformIconList.tsx';
 
 const GameCard = ({
   name,
