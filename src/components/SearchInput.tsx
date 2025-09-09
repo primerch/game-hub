@@ -3,6 +3,7 @@ import { useRef } from 'react';
 
 const SearchInput = () => {
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
+  // const navagate = useNavigate();
 
   const ref = useRef<HTMLInputElement>(null);
 
@@ -13,6 +14,7 @@ const SearchInput = () => {
         onSubmit={(e) => {
           e.preventDefault();
           if (ref.current) setSearchText(ref.current.value);
+          // navagate('/');
         }}
       >
         <label className="input m-1 w-full rounded-4xl">
