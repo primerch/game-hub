@@ -22,7 +22,7 @@ const ExpandableText = ({ children }: Props) => {
           {children}
 
           <button
-            className="btn btn-sm btn-neutral mx-5 inline bg-yellow-300 font-bold text-black"
+            className="btn btn-xs btn-neutral mx-5 inline bg-yellow-300 font-bold text-black"
             onClick={() => setExpanded(false)}
           >
             Show Less
@@ -36,7 +36,7 @@ const ExpandableText = ({ children }: Props) => {
       <p>
         {summary}...
         <button
-          className="btn btn-sm btn-neutral mx-5 inline bg-yellow-300 font-bold text-black"
+          className="btn btn-xs btn-neutral mx-5 inline bg-yellow-300 font-bold text-black"
           onClick={() => setExpanded(true)}
         >
           Show More
