@@ -16,9 +16,9 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (!screenshots) return null;
 
   return (
-    <div className="grid lg:grid-cols-2 xl:grid-cols-4">
+    <div className="grid lg:grid-cols-2">
       {screenshots.map((s) => (
-        <img src={s} alt="" />
+        <img src={s} alt="" className="border border-5 border-black" />
       ))}
     </div>
   );
