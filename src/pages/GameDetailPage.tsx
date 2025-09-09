@@ -1,23 +1,20 @@
 import useGame from '@/hooks/useGame';
-import { useParams, useSearchParams } from 'react-router';
+import { useParams } from 'react-router';
 
 const GameDetailPage = () => {
   const { slug } = useParams();
 
-  const [searchParams] = useSearchParams();
+  const { data: game, isLoading, error } = useGame(slug!);
 
-  const gameId = parseInt(searchParams.get('id'));
-  const { data, isSuccess } = useGame(gameId);
+  if (isLoading) return <div className="loading loading-dots"></div>;
+  if (error || !game) throw error;
 
-  if (isSuccess)
-    return (
-      <>
-        <h1 className="text-5xl">{data.name}</h1>
-        <p>{data.description_raw}</p>
-      </>
-    );
-
-  return <></>;
+  return (
+    <>
+      <h1 className="text-5xl">{game.name}</h1>
+      <p>{game.description_raw}</p>
+    </>
+  );
 };
 
 export default GameDetailPage;

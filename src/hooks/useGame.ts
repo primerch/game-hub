@@ -1,19 +1,13 @@
 import APIClient from '@/services/api-client';
 import { useQuery } from '@tanstack/react-query';
+import type { Game } from './useGames';
 
-// interface Game {
-//   id: number;
-//   slug: string;
-//   name: string;
-//   description_raw: string;
-// }
-
-function useGame(id: number) {
-  const apiClient = new APIClient(`games/${id}`);
+function useGame(slug: string) {
+  const apiClient = new APIClient<Game>('games');
 
   return useQuery<Game>({
-    queryKey: [`games/:${id}`],
-    queryFn: () => apiClient.getGame(),
+    queryKey: [`games/:${slug}`],
+    queryFn: () => apiClient.get(slug),
   });
 }
 
