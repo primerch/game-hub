@@ -25,6 +25,10 @@ class APIClient<T> {
       .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
   }
+
+  getGame() {
+    return axiosInstance.get(this.endpoint).then(res => res.data);
+  }
 }
 
 export default APIClient;

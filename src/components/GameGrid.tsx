@@ -1,5 +1,6 @@
 import useGameQueryStore from '@/store.ts';
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router';
 import useGames from '../hooks/useGames.ts';
 import GameCard from './GameCard.tsx';
 import GameCardContainer from './GameCardContainer.tsx';
@@ -26,6 +27,7 @@ const GameGrid = () => {
     }
 
     // IntersectionObserver watches when a DOM element enters the viewport.
+
     const observer = new IntersectionObserver(
       (entries) => {
         // entries[0].isIntersecting → true when the sentinel div is visible.
@@ -68,17 +70,27 @@ const GameGrid = () => {
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
-            {page?.results.map((game) => (
-              <GameCardContainer key={game.id}>
-                <GameCard
-                  id={game.id}
-                  name={game.name}
-                  background_image={game.background_image}
-                  parent_platforms={game.parent_platforms}
-                  metacritic={game.metacritic}
-                />
-              </GameCardContainer>
-            ))}
+            {page?.results.map((game) => {
+              return (
+                <Link
+                  key={game.id}
+                  to={{
+                    pathname: '/games/' + game.id,
+                    search: `?slug=${game.slug}`,
+                  }}
+                >
+                  <GameCardContainer>
+                    <GameCard
+                      id={game.id}
+                      name={game.name}
+                      background_image={game.background_image}
+                      parent_platforms={game.parent_platforms}
+                      metacritic={game.metacritic}
+                    />
+                  </GameCardContainer>
+                </Link>
+              );
+            })}
           </React.Fragment>
         ))}
       </div>
