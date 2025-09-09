@@ -71,7 +71,6 @@ const GameGrid = () => {
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page?.results.map((game) => {
-              console.log(game);
               return (
                 <Link key={game.id} to={`/games/${game.slug}`}>
                   <GameCardContainer>

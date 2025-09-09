@@ -16,8 +16,13 @@ const GameScreenshots = ({ gameId }: Props) => {
 
   return (
     <div className="grid lg:grid-cols-2">
-      {screenshots.map((s) => (
-        <img src={s} alt="" className="gap-2 border border-5 border-black" />
+      {screenshots.map((s, idx) => (
+        <img
+          key={idx}
+          src={s}
+          alt=""
+          className="gap-2 border border-5 border-black"
+        />
       ))}
     </div>
   );
