@@ -75,8 +75,8 @@ const GameGrid = () => {
                 <Link
                   key={game.id}
                   to={{
-                    pathname: '/games/' + game.id,
-                    search: `?slug=${game.slug}`,
+                    pathname: '/games/' + game.slug,
+                    search: `?id=${game.id}`,
                   }}
                 >
                   <GameCardContainer>

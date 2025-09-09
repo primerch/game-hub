@@ -1,10 +1,13 @@
 import useGame from '@/hooks/useGame';
-import { useParams } from 'react-router';
+import { useParams, useSearchParams } from 'react-router';
 
 const GameDetailPage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const { data, isSuccess } = useGame(id);
+  const [searchParams] = useSearchParams();
+
+  const gameId = parseInt(searchParams.get('id'));
+  const { data, isSuccess } = useGame(gameId);
 
   if (isSuccess)
     return (
