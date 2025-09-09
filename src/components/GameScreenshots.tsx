@@ -9,7 +9,6 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (isLoading) return <div className="loading loading-dots"></div>;
 
   if (error) throw error;
-  console.log('🚀 ~ GameScreenshots ~ data:', data);
 
   const screenshots = data?.results.map((s) => s.image);
 
