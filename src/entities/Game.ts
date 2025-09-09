@@ -1,4 +1,6 @@
 import type { Platform } from '@/components/PlatformIconList';
+import type { Genre } from './Genre';
+import type { Publisher } from './Publisher';
 
 export interface Game {
   id: number;
@@ -8,4 +10,6 @@ export interface Game {
   metacritic: number;
   slug: string;
   description_raw: string;
+  genres: Genre[];
+  publishers: Publisher[];
 }
