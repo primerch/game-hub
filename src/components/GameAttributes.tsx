@@ -1,6 +1,6 @@
 import CriticScore from '@/components/CriticScore';
 import DefinitionItem from '@/components/DefinitionItem';
-import type { Game } from '@/entities/Game';
+import type Game from '@/entities/Game';
 
 interface Props {
   game: Game;

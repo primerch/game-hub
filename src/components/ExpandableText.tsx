@@ -18,30 +18,25 @@ const ExpandableText = ({ children }: Props) => {
   if (expanded)
     return (
       <>
-        <p>
-          {children}
-
-          <button
-            className="btn btn-xs btn-neutral mx-5 inline bg-yellow-300 font-bold text-black"
-            onClick={() => setExpanded(false)}
-          >
-            Show Less
-          </button>
-        </p>
+        <p>{children}</p>
+        <button
+          className="btn btn-xs btn-neutral mt-2 inline bg-yellow-300 font-bold text-black"
+          onClick={() => setExpanded(false)}
+        >
+          Show Less
+        </button>
       </>
     );
 
   return (
     <>
-      <p>
-        {summary}...
-        <button
-          className="btn btn-xs btn-neutral mx-5 inline bg-yellow-300 font-bold text-black"
-          onClick={() => setExpanded(true)}
-        >
-          Show More
-        </button>
-      </p>
+      <p>{summary}...</p>
+      <button
+        className="btn btn-xs btn-neutral mt-2 inline bg-yellow-300 font-bold text-black"
+        onClick={() => setExpanded(true)}
+      >
+        Show More
+      </button>
     </>
   );
 };

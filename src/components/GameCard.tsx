@@ -1,4 +1,4 @@
-import type { Game } from '@/entities/Game.ts';
+import type Game from '@/entities/Game.ts';
 import getCroppedImageUrl from '../services/image-url.ts';
 import CriticScore from './CriticScore.tsx';
 import PlatformIconList from './PlatformIconList.tsx';

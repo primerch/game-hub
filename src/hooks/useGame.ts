@@ -1,7 +1,6 @@
 import APIClient from '@/services/api-client';
 import { useQuery } from '@tanstack/react-query';
-import type { Game } from '../entities/Game';
-import { useParams } from 'react-router';
+import type Game from '../entities/Game';
 
 function useGame(slug: string) {
   const apiClient = new APIClient<Game>('games');
