@@ -5,11 +5,25 @@ interface Props {
 }
 
 const GameTrailer = ({ gameId }: Props) => {
-  const { data } = useTrailers(gameId);
+  const { data, error, isLoading } = useTrailers(gameId);
 
-  const trailerUrl = data?.results[0].data[480];
+  if (isLoading) return <div className="loading loading-dots"></div>;
 
-  return <video className="w-full" src={trailerUrl} controls autoPlay></video>;
+  if (error) throw error;
+
+  const first = data?.results[0];
+
+  if (!first) return null;
+
+  return (
+    <video
+      className="w-full"
+      poster={first.preview}
+      src={first.data[480]}
+      controls
+      autoPlay
+    ></video>
+  );
 };
 
 export default GameTrailer;
