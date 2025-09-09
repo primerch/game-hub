@@ -23,7 +23,7 @@ const GameDetailPage = () => {
       <h1 className="text-3xl"> {game.name}</h1>
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttributes game={game} />
-      <GameTrailer trailer={trailerUrl}></GameTrailer>
+      <GameTrailer trailer={trailerUrl || ''}></GameTrailer>
     </>
   );
 };
