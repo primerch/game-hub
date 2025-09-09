@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode | ReactNode[];
 }
 
-const DefinitionTerm = ({ term, children }: Props) => {
+const DefinitionIterm = ({ term, children }: Props) => {
   return (
     <dl className="my-5">
       <dt className="font-bold text-gray-500">{term}</dt>
@@ -18,4 +18,4 @@ const DefinitionTerm = ({ term, children }: Props) => {
   );
 };
 
-export default DefinitionTerm;
+export default DefinitionIterm;

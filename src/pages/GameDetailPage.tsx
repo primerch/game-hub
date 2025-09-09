@@ -1,5 +1,5 @@
 import CriticScore from '@/components/CriticScore';
-import DefinitionTerm from '@/components/DefinitionTerm';
+import DefinitionItem from '@/components/DefinitionItem';
 import ExpandableText from '@/components/ExpandableText';
 import useGame from '@/hooks/useGame';
 import { useParams } from 'react-router';
@@ -20,24 +20,24 @@ const GameDetailPage = () => {
       <ExpandableText>{game.description_raw}</ExpandableText>
 
       <div className="align-center grid justify-center lg:grid-cols-2 xl:grid-cols-4">
-        <DefinitionTerm term={'Platforms'}>
+        <DefinitionItem term={'Platforms'}>
           {game.parent_platforms.map((pp) => (
             <p>{pp.platform.name}</p>
           ))}
-        </DefinitionTerm>
+        </DefinitionItem>
 
-        <DefinitionTerm term="Metascore">
+        <DefinitionItem term="Metascore">
           <CriticScore metacritic={game.metacritic} />
-        </DefinitionTerm>
+        </DefinitionItem>
 
-        <DefinitionTerm term="Genres">
+        <DefinitionItem term="Genres">
           {game.genres.map((genre) => genre.name)}
-        </DefinitionTerm>
-        <DefinitionTerm term="Publishers">
+        </DefinitionItem>
+        <DefinitionItem term="Publishers">
           {game.publishers.map((publisher) => (
             <p>{publisher.name}</p>
           ))}
-        </DefinitionTerm>
+        </DefinitionItem>
       </div>
     </>
   );
